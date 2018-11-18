@@ -1,11 +1,20 @@
 class TodoItemsController < ApplicationController
     before_action :set_todo_list
-    
+
     def create
         @todo_item = @todo_list.todo_items.create(todo_item_params)
         redirect_to todo_list_path(@todo_list)
     end
 
+    def destroy
+        @todo_item = @todo_list.todo_items.find(params[:id])
+        if @todo_item.destroy 
+            flash[:success] = "Looks like that one is gone."
+        else
+            flash[:error] = "Uh oh, we had a little trouble getting rid of that one!"
+        end
+        redirect_to @todo_list
+    end
 
     private
 
