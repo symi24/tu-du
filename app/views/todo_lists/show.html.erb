@@ -1,10 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1>
+<h1 class="list-title">
   <%= @todo_list.title %>
 </h1>
-
-<h3>
+<h3 class="list-desc">
   <%= @todo_list.description %>
 </h3>
 
@@ -15,5 +14,10 @@
     </div>
 </div>
 
-<%= link_to 'Edit', edit_todo_list_path(@todo_list) %> |
-<%= link_to 'Back', todo_lists_path %>
+<%= link_to edit_todo_list_path(@todo_list) do %>
+<i class="fas fa-edit"></i>
+<% end %>
+ |
+<%= link_to todo_lists_path do %>
+<i class="fas fa-chevron-circle-left"></i>
+<% end %>
